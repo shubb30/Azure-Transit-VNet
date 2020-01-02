@@ -20,6 +20,13 @@
 			},
 			"defaultValue": "Enter a globally unique name"
 		},
+		"supportsHttpsTrafficOnly": {
+			"type": "bool",
+			"metadata": {
+				"description": "Whether or not to require Secure (HTTPS) transfer to the storage account"
+			},
+			"defaultValue": true
+		},
 		"mgmtPublicIPDns": {
 			"type": "string",
 			"metadata": {
@@ -127,7 +134,7 @@
 			},
 			"defaultValue": "mgmt-pip"
 		},
-		
+
 		"loadBalancerName": {
 			"type": "string",
 			"metadata": {
@@ -249,7 +256,7 @@
 				}
 		}
 	},
-	
+
 	"variables": {
 		"baseUrl"              : "https://raw.githubusercontent.com/PaloAltoNetworks/Azure-Transit-VNet/master/Azure-Transit-VNET-1.0/azure-pan-hub",
 		"deployStorageURL"     : "[concat(variables('baseUrl'),'/deployStorage.json')]",
@@ -261,11 +268,11 @@
 		"location"   : "[resourceGroup().location]",
 		"rgname"     : "[resourceGroup().name]",
 		"storageName": "[toLower(concat(parameters('storageName')))]",
-		"customDataField": "[concat('storage-account=', parameters('BootstrapStorageAccount'), ',access-key=', parameters('StorageAccountAccessKey'), ',file-share=', parameters('StorageAccountFileShare'),',share-directory=', parameters('StorageAccountFileShareDirectory'))]"	
+		"customDataField": "[concat('storage-account=', parameters('BootstrapStorageAccount'), ',access-key=', parameters('StorageAccountAccessKey'), ',file-share=', parameters('StorageAccountFileShare'),',share-directory=', parameters('StorageAccountFileShareDirectory'))]"
 	},
 
 	"resources": [
-		{	
+		{
 			"name": "deployStorage",
 			"type": "Microsoft.Resources/deployments",
 			"apiVersion": "2015-01-01",
@@ -284,11 +291,14 @@
 					},
 					"storageName": {
 						"value": "[variables('storageName')]"
+					},
+					"supportsHttpsTrafficOnly": {
+						"value": "[variables('supportsHttpsTrafficOnly')]"
 					}
 				}
 			}
 		},
-		{	
+		{
 			"name": "deployNsg",
 			"type": "Microsoft.Resources/deployments",
 			"apiVersion": "2015-01-01",
@@ -314,7 +324,7 @@
 				}
 			}
 		},
-		{	
+		{
 			"name": "deployVnet",
 			"type": "Microsoft.Resources/deployments",
 			"apiVersion": "2015-01-01",
@@ -358,7 +368,7 @@
 				}
 			}
 		},
-		{	
+		{
 			"name": "deployOutboundLoadBalancer",
 			"type": "Microsoft.Resources/deployments",
 			"apiVersion": "2015-01-01",
@@ -396,7 +406,7 @@
 				}
 			}
 		},
-		{	
+		{
 			"name": "deployOutboundFirewall",
 			"type": "Microsoft.Resources/deployments",
 			"apiVersion": "2015-01-01",

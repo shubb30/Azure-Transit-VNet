@@ -11,6 +11,9 @@
         "Description": "The name of the new storage account created to store the VMs disks"
       }
     },
+    "supportsHttpsTrafficOnly": {
+        "type": "bool"
+    },
     "storageAccountType": {
       "type": "string",
       "allowedValues": [

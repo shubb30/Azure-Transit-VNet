@@ -12,7 +12,11 @@
 			}
 		},
 		"supportsHttpsTrafficOnly": {
-			"type": "bool"
+			"type": "bool",
+			"metadata": {
+				"description": "Whether or not to require Secure (HTTPS) transfer to the storage account"
+			},
+
 		},
 		"storageType": {
 			"type": "string",

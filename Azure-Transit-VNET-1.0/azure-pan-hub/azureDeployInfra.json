@@ -20,7 +20,7 @@
 			},
 			"defaultValue": "Enter a globally unique name"
 		},
-		"storageSupportsHttpsTrafficOnly": {
+		"storageSecureTransferRequired": {
 			"type": "bool",
 			"metadata": {
 				"description": "Whether or not to require Secure (HTTPS) transfer to the storage account"
@@ -292,7 +292,7 @@
 					"storageName": {
 						"value": "[variables('storageName')]"
 					},
-					"storageSupportsHttpsTrafficOnly": {
+					"storageSecureTransferRequired": {
 						"value": "[variables('supportsHttpsTrafficOnly')]"
 					}
 				}

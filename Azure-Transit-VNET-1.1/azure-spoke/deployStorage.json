@@ -12,7 +12,7 @@
       }
     },
     "supportsHttpsTrafficOnly": {
-        "type": "bool"
+      "type": "bool"
     },
     "storageAccountType": {
       "type": "string",

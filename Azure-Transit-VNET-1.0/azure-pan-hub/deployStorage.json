@@ -42,7 +42,7 @@
 			"location": "[parameters('location')]",
 			"properties": {
 				"accountType": "[parameters('storageType')]",
-				"supportsHttpsTrafficOnly": "[parameters('storageSecureTransferRequired')]",
+				"supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]",
 			}
 		 }
 	],

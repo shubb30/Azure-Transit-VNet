@@ -293,7 +293,7 @@
 						"value": "[variables('storageName')]"
 					},
 					"storageSecureTransferRequired": {
-						"value": "[parameters('storageSecureTransferRequired')]"
+						"value": "[parameters('supportsHttpsTrafficOnly')]"
 					}
 				}
 			}
